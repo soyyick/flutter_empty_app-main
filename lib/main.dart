@@ -1,34 +1,42 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MainApp());
-}
+void main() => runApp(MyApp());
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        scaffoldBackgroundColor: const Color.fromARGB(255, 176, 15, 216), // 💗 สีพื้นหลังของ Scaffold
-        textTheme: const TextTheme(
-          bodyMedium: TextStyle(color: Colors.black87), // สีข้อความหลัก
-        ),
-      ),
-      home: const HomeScreen(),
+      debugShowCheckedModeBanner: false,
+      home: MyHomePage(),
     );
   }
 }
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
+class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      backgroundColor: Colors.pink[100],
       body: Center(
-        child: Text('Hola Akarapol!'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min, // ป้องกัน Column สูงเกิน
+          children: [
+            SizedBox(
+              width: 150,
+              height: 150,
+              child: Image.asset(
+                'assets/images/Gun.jpg',
+                fit: BoxFit.cover,
+              ),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Hello Akarapol',
+              style: TextStyle(fontSize: 16),
+            ),
+          ],
+        ),
       ),
     );
   }
